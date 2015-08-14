@@ -5,7 +5,7 @@
     <%= link_to @link.title, @link.url %>
     <br>
     <small class="author">Submitted <%= time_ago_in_words(@link.created_at) %>
-      by <%= @link.user.email %>
+      by <%= @link.user.name %>
     </small>
     <br>
   </h2>
