@@ -3,27 +3,30 @@
 
 <% @links.each do |link| %>
   <div class="link row clearfix">
-    <h2>
-      <%= link_to link.title, link.url %>
-      <br>
-      <small class="author">Submitted <%= time_ago_in_words(link.created_at) %>
-        by <%= link.user.name %>
-      </small>
-      <br>
-      <small class="comments_link"><%= link_to 'COMMENTS', link %></small>
-    </h2>
-
-    <div class="btn-group">
+    <div class="btn-group col-md-1 col-lg-1">
       <%= link_to like_link_path(link), method: :put,
         class: "btn btn-default btn-sm" do %>
         <span class="glyphicon glyphicon-chevron-up"></span>
-        <%= link.get_upvotes.size %>
       <% end %>
+      <h4 class="vote_score">
+        <%= link.get_upvotes.size - link.get_downvotes.size %>
+      </h4>
       <%= link_to dislike_link_path(link), method: :put,
         class: "btn btn-default btn-sm" do %>
         <span class="glyphicon glyphicon-chevron-down"></span>
-        <%= link.get_downvotes.size %>
       <% end %>
+    </div>
+
+    <div class="col-md-11 col-lg-11">
+      <h2>
+        <%= link_to link.title, link.url %>
+        <br>
+        <small class="author">Submitted <%= time_ago_in_words(link.created_at) %>
+          by <%= link.user.name %>
+        </small>
+        <br>
+        <small class="comments_link"><%= link_to 'COMMENTS', link %></small>
+      </h2>
     </div>
   </div>
 <% end %>

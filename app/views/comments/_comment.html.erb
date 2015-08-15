@@ -9,6 +9,7 @@
     </div>
 
     <div class="btn-group pull-right">
+      <%= link_to 'reply', root_path, class: "btn btn-sm btn-default" %>
       <% if comment.user == current_user %>
         <%= link_to 'delete', comment, method: :delete,
           data: { confirm: 'Sure you wanna do that?' },
